@@ -1,6 +1,8 @@
 package com.donaldo.bookfinder;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -79,6 +81,14 @@ public class MainActivity extends AppCompatActivity implements BooksByNameHolder
 
     @Override
     public void onBooksClicked(Books books) {
-        System.out.println("ALOHA " + books.getBook_name());
+        Bundle b = new Bundle();
+        b.putString("book_id", books.getId());
+        b.putString("book_name", books.getBook_name());
+        b.putString("book_description", books.getDescription());
+        b.putString("book_url_buy", books.getUrl_buy());
+
+        Intent intent = new Intent(this, BookDetailActivity.class);
+        intent.putExtras(b);
+        startActivity(intent);
     }
 }

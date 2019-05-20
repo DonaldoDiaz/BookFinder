@@ -56,12 +56,15 @@ public class BooksByNameAdapter extends RecyclerView.Adapter<BooksByNameHolder> 
             }
 
             Books book = new Books(
+                    item.getId(),
                     thumbnail,
+                    item.getVolumeInfo().getDescription(),
                     item.getVolumeInfo().getTitle(),
                     loadAuthors(item.getVolumeInfo().getAuthors()),
                     item.getVolumeInfo().getPublisher(),
                     loadISBN(item.getVolumeInfo().getIndustryIdentifiers()),
-                    item.getVolumeInfo().getPublishedDate());
+                    item.getVolumeInfo().getPublishedDate(),
+                    item.getSaleInfo().getBuyLink());
             books.add(book);
         }
         notifyDataSetChanged();

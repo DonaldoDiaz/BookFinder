@@ -36,12 +36,14 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:orientation="horizontal"
-            android:padding="5dp">
+            android:padding="5dp"
+            android:weightSum="1">
 
             <com.google.android.material.textfield.TextInputEditText style="@style/edtBookName"
                 android:id="@+id/edtBookName"
-                android:layout_width="360dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="0.9"
                 android:hint="Search">
 
             </com.google.android.material.textfield.TextInputEditText>
@@ -49,10 +51,11 @@
             <Button
                 android:id="@+id/btnSearch"
                 style="@android:style/Widget.Material.Light.Button.Borderless.Small"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="5dp"
                 android:background="@drawable/ic_magnify"
+                android:layout_weight="0.1"
                 android:textAlignment="textEnd" />
         </LinearLayout>
 

@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:cardview="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/bookCard"
+    style="@style/Widget.MaterialComponents.CardView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="@dimen/card_margin_bottom">
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,93 +17,105 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="5dp"
-            android:background="@color/colorPrimaryDark"/>
+            android:background="@color/colorPrimaryDark" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
             android:weightSum="1">
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_weight="0.25"
                 android:orientation="vertical"
-                android:weightSum="1"
-                android:layout_weight="0.25">
+                android:weightSum="1">
 
                 <ImageView
                     android:id="@+id/imvPortrait"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:visibility="visible"/>
+                    android:visibility="visible" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:weightSum="1"
                 android:layout_weight="0.75"
-                android:padding="@dimen/card_padding">
+                android:orientation="vertical"
+                android:padding="@dimen/card_padding"
+                android:weightSum="1">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginBottom="6dp">
+                    android:layout_marginBottom="6dp"
+                    android:orientation="horizontal">
+
                     <TextView
                         android:id="@+id/tvBookName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textAppearance="@style/primaryText"
+                        android:maxLines="2"
                         android:text="NOMBRE DE LIBRO"
-                        android:maxLines="2"/>
+                        android:textAppearance="@style/primaryText" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginBottom="6dp">
+                    android:layout_marginBottom="6dp"
+                    android:orientation="horizontal">
+
                     <TextView
                         android:id="@+id/tvAuthor"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="AUTOR"
-                        android:maxLines="1"/>
+                        android:maxLines="1"
+                        android:text="AUTOR" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginBottom="6dp">
+                    android:layout_marginBottom="6dp"
+                    android:orientation="horizontal">
+
                     <TextView
                         android:id="@+id/tvEditorial"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="EDITORIAL"/>
+                        android:text="EDITORIAL" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:layout_marginBottom="6dp"
+                    android:orientation="horizontal"
                     android:weightSum="1">
+
                     <TextView
                         android:id="@+id/tvISBN"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="2342342393248234"
                         android:layout_weight="0.6"
-                        android:textSize="11sp"/>
+                        android:text="2342342393248234"
+                        android:textSize="11sp" />
+
                     <TextView
                         android:id="@+id/tvPublishDate"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="2019"
                         android:layout_weight="0.4"
-                        android:textSize="11sp"
-                        android:gravity="right"/>
+                        android:gravity="right"
+                        android:text="2019"
+                        android:textSize="11sp" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
 
     </LinearLayout>
 
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>

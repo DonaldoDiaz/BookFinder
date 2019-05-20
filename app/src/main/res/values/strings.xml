@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Book Finder</string>
+    <string name="title_activity_book_detail">BookDetailActivity</string>
+    <string name="small_text">
+        "Description Movie"
+    </string>
+    <string name="action_settings">Settings</string>
 </resources>
