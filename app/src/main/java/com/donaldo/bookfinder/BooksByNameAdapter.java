@@ -1,13 +1,11 @@
 package com.donaldo.bookfinder;
 
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.donaldo.bookfinder.bookapi.pojos.Bookfinder;
 import com.donaldo.bookfinder.bookapi.pojos.IndustryIdentifier;
 import com.donaldo.bookfinder.bookapi.pojos.Item;
 
@@ -19,27 +17,25 @@ public class BooksByNameAdapter extends RecyclerView.Adapter<BooksByNameHolder> 
     private ArrayList<Books> books;
     private int resource;
     private BooksByNameHolder.BooksListener booksListener;
-    private Context context;
 
 
-    public BooksByNameAdapter(ArrayList<Books> books, int resource, Context context /*,BooksByNameHolder.BooksListener booksListener*/) {
+    public BooksByNameAdapter(ArrayList<Books> books, int resource, BooksByNameHolder.BooksListener booksListener) {
         this.books = books;
         this.resource = resource;
-        this.context = context;
-        //this.booksListener = booksListener;
+        this.booksListener = booksListener;
     }
 
     @NonNull
     @Override
     public BooksByNameHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(resource,viewGroup,false);
-        return new BooksByNameHolder(view);
+        return new BooksByNameHolder(view, booksListener);
     }
 
     @Override
     public void onBindViewHolder(@NonNull BooksByNameHolder holder, int position) {
         final Books book = books.get(position);
-        holder.setBook(book, context);
+        holder.setBook(book);
     }
 
     @Override
@@ -48,6 +44,7 @@ public class BooksByNameAdapter extends RecyclerView.Adapter<BooksByNameHolder> 
     }
 
     public void updateBookList(List<Item> items){
+        books.clear();
         for (Item item: items) {
 
             System.out.println(item.getId());

@@ -1,10 +1,9 @@
 package com.donaldo.bookfinder;
 
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -20,7 +19,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements BooksByNameHolder.BooksListener{
 
     SearchBooksService searchBooksService;
     private Button btnSearch;
@@ -36,11 +35,11 @@ public class MainActivity extends AppCompatActivity {
 
         bookRecycler = findViewById(R.id.detailOrderRecycler);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(MainActivity.this);
-        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
         bookRecycler.setLayoutManager(linearLayoutManager);
 
         data = new ArrayList<>(0);
-        booksByNameAdapter = new BooksByNameAdapter(data, R.layout.cardview_books, getApplicationContext());
+        booksByNameAdapter = new BooksByNameAdapter(data, R.layout.cardview_books, this);
         bookRecycler.setAdapter(booksByNameAdapter);
 
         searchBooksService = ApiUtils.getBooksByName();
@@ -77,4 +76,9 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     };
+
+    @Override
+    public void onBooksClicked(Books books) {
+        System.out.println("ALOHA " + books.getBook_name());
+    }
 }

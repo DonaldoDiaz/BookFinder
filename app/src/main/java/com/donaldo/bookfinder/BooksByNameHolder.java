@@ -1,8 +1,8 @@
 package com.donaldo.bookfinder;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -14,7 +14,7 @@ class BooksByNameHolder extends RecyclerView.ViewHolder {
         void onBooksClicked(Books books);
     }
 
-    BooksListener listener;
+    BooksListener booksListener;
     private ImageView portrait;
     private TextView book_name;
     private TextView author;
@@ -22,8 +22,9 @@ class BooksByNameHolder extends RecyclerView.ViewHolder {
     private TextView isbn;
     private TextView publish_date;
 
-    public BooksByNameHolder(@NonNull View itemView) {
+    public BooksByNameHolder(@NonNull View itemView, BooksListener booksListener) {
         super(itemView);
+        this.booksListener = booksListener;
         portrait = itemView.findViewById(R.id.imvPortrait);
         book_name = itemView.findViewById(R.id.tvBookName);
         author = itemView.findViewById(R.id.tvAuthor);
@@ -32,7 +33,7 @@ class BooksByNameHolder extends RecyclerView.ViewHolder {
         publish_date = itemView.findViewById(R.id.tvPublishDate);
     }
 
-    public void setBook(final Books book, Context context){
+    public void setBook(final Books book){
 
         Picasso.get()
                 .load(book.getUrl_portrait().replace("http://", "https://"))
@@ -45,5 +46,11 @@ class BooksByNameHolder extends RecyclerView.ViewHolder {
         editorial.setText(book.getEditorial());
         isbn.setText(book.getIsbn());
         publish_date.setText(book.getPublish_date());
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                booksListener.onBooksClicked(book);
+            }
+        });
     }
 }
