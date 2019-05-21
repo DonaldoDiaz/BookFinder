@@ -45,7 +45,13 @@ public class BookDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try {
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(book_url_buy)));
+                    if (book_url_buy!= null){
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(book_url_buy)));
+                    }else{
+                        Snackbar.make(view, "No link para compra disponible", Snackbar.LENGTH_LONG).show();
+                    }
+                    //Snackbar.make(view, "Link: "+ book_url_buy, Snackbar.LENGTH_LONG).show();
+                    //startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(book_url_buy)));
                 } catch (android.content.ActivityNotFoundException anfe) {
                     Snackbar.make(view, "Error al intentar abrir el link", Snackbar.LENGTH_LONG).show();
                 }
